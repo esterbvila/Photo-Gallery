@@ -1,9 +1,11 @@
 # Photo-Gallery
 Programmed a photo gallery where the user can upload and delete photos.
 Technologies: Node.js and the modules Express, Nodemon and ColorThief. Also used ejs.
-Exercise as part of the Backend Bootcamp by Singulars. 
+Exercise as part of the Backend Bootcamp by Singulars.
 
-1. Install the following dependencies:
+1. Download or/and install node.js 
+
+2. Install the following modules:
 - Express
 - ColorThief
 - Nodemon
