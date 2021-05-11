@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Fotos</title>
+    <style>
+        .list{
+        list-style:none
+        }
+        #squareCol{
+            width:20px;
+            height:20px;
+        }
+        .fas{
+            color:black;
+            font-size:1.5em;
+        }
+        button{
+            background:transparent;
+            border:none;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <header>
+        <%- include("../partials/menu") %>
+    </header>
+    <main>
+            <h1>Photo Gallery</h1>
+            <% if(photos.length !== 0){ %>
+            <ul class="list">
+                <% 
+                photos.forEach(function(photo) { %>
+                    <li>
+                        <strong class="text-uppercase"><%= photo.title %></strong>
+                    </li>
+                    <li>
+                        <%= photo.date %>
+                    </li> 
+                    <li>
+                        <img src="<%= photo.url %>"></img>
+                    </li>
+                    <li>
+                        <h2 style="background-color: rgb(<%= photo.color[0] %>,<%= photo.color[1] %>,<%= photo.color[2] %> )">
+                            <%= photo.color %></h2>
+                        <p><a href="modifyPhoto/<%= photo.id%>" > <i class="fas fa-pencil-alt"></i></a>&nbsp;&nbsp;
+                            <a href="deletePhoto/<%= photo.id%>"> <i class="fas fa-trash-alt"></i></a></p>
+                    </li>
+                <% })%>
+            </ul><% } %>
+    </main>
+</body>
+
+</html>

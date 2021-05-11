@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Añadir Imagen</title>
+  </head>
+
+  <body>
+    <header><%- include("../partials/menu") %></header>
+
+    <% if (error) { %>
+    <h3 class="text-danger bg-light"><%= message %></h3>
+    <% } %>
+
+
+<% if (edit === true){ %>
+    <form class="container-fluid" action="/add-photo" method="POST">
+      <fieldset>
+        <label for="title">Título</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          maxlength="10"
+          pattern="[a-zA-Z0-9_]{1,10}"
+          value="<%= photo.title %>"
+          required
+        />
+        <label for="data">Data</label>
+        <input type="date" id="data" name="data" value="<%= photo.date %>" required />
+        <input type="submit" value="Add" />
+      </fieldset>
+    </form>
+    <img src="<%= photo.url %>"></img>
+    <%}%>
+    <% if (edit === false){ %>
+      <form class="container-fluid" action="/add-photo" method="POST">
+        <fieldset>
+          <label for="title">Título</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            maxlength="10"
+            pattern="[a-zA-Z0-9_]{1,10}"
+            required
+          />
+          <label for="url">url</label>
+          <input type="data" id="url" name="url" required />
+          <label for="data">Data</label>
+          <input type="date" id="data" name="data" required />
+          <input type="submit" value="Add" />
+        </fieldset>
+      </form>
+
+      <%}%>
+  </body>
+</html>
